@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <div id="test"></div>
+
+        <script type="text/javascript" src='../doc/js/react.development.js'></script>
+        <script type="text/javascript" src='../doc/js/react-dom.development.js'></script>
+        <script type="text/javascript" src='../doc/js/babel.min.js'></script>
+    
+        <script type="text/babel">
+            // class Weather extends React.Component{
+            //     constructor(props){
+            //         super(props)
+            //         this.state = {isHot:false,wind:'wind'}
+            //         this.changeWeather = this.changeWeather.bind(this)
+            //     }
+            //     render() {
+            //       const{isHot,wind} = this.state
+            //       return <h1 onClick={this.changeWeather}>Weather is {isHot? 'hot':'cold'},{wind}</h1>   
+            //     }
+            //     changeWeather(){
+            //         const isHot = this.state.isHot
+            //         this.setState({isHot:!isHot}) 
+            //     }
+
+            // }
+            class Weather extends React.Component{
+
+                state = {isHot:false,wind:'wind'}
+                render(){
+                    const{isHot,wind} = this.state
+                    return <h1 onClick={this.changeWeather}>The weather is {isHot?'hot':'cold'},{wind}</h1>
+                }
+                changeWeather=()=>{
+                    const isHot = this.state.isHot
+                    this.setState({isHot:!isHot})
+                }
+            }
+
+
+            ReactDOM.render(<Weather/>,document.getElementById('test'))
+        </script>
+</body>
+
+
+</html>

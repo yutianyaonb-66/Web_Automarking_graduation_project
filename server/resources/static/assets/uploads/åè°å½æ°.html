@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <div id="test"></div>
+
+        <script type="text/javascript" src='../doc/js/react.development.js'></script>
+        <script type="text/javascript" src='../doc/js/react-dom.development.js'></script>
+        <script type="text/javascript" src='../doc/js/babel.min.js'></script>
+    
+        <script type="text/babel">
+
+            class Demo extends React.Component{
+               // myRef = React.createRef()  
+                showValue =()=>{
+                    const {input1} = this
+                    alert (input1.value)
+                }
+
+                showValue2 =()=>{
+                    const {input2} =this
+                    alert (input2.value)
+                }
+
+                saveInput =(c)=>{
+                    this.input3 = c;
+                    const{input3}=this
+                    console.log("@",c);
+                }
+
+                showData =()=>{
+                    console.log(this.myRef.current.value);
+                }
+
+                render(){
+                    return(
+                        <div>
+                            <input ref={c => this.input1 = c} type="text" placeholder="aaa"/>
+                            <button onClick={this.showValue1}>button</button>
+                            <input onBlur ={this.showValue2} ref={c=>this.input2 = c} type="text"/>
+                            <input ref={this.saveInput} type="text"/>
+                            <input ref={this.myRef} type="text"/>
+                            <button onClick={this.showData}>createRef</button>
+                        </div>
+                    )
+
+                }
+            }
+
+
+            ReactDOM.render(<Demo/>,document.getElementById('test'))
+        </script>
+</body>
+
+
+</html>
